@@ -75,12 +75,15 @@ Closure defaultSteps() {
 		shell("""
 					echo "Removing spring-cloud-build if present"
 					rm -rf spring-cloud-build
+					rm -rf replace_parent_version_in_pom.*
 					echo "Cloning spring-cloud-build"
 					git clone $springCloudBuildUrl
 					echo "Downloading and running script to change parent version"
 					wget $gistUrl --no-check-certificate
-					groovy replace_parent_version_in_pom.groovy -p "spring-cloud-build/pom.xml" -v "$springBootVersion"
 					""")
+		groovyScriptFile('replace_parent_version_in_pom.groovy ') {
+			scriptParams("-p 'spring-cloud-build/pom.xml'", "-v '$springBootVersion'")
+		}
 		shell('''
 					echo "Installing built version with different parent"
 					./spring-cloud-build/mvnw clean install
