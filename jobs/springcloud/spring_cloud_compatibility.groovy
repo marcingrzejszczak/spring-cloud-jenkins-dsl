@@ -82,7 +82,7 @@ Closure defaultSteps() {
 					wget $gistUrl --no-check-certificate
 					""")
 		groovyScriptFile('replace_parent_version_in_pom.groovy ') {
-			scriptParams("-p 'spring-cloud-build/pom.xml'", "-v '$springBootVersion'")
+			scriptParams(["-p 'spring-cloud-build/pom.xml'", "-v '$springBootVersion'"])
 		}
 		shell('''
 					echo "Installing built version with different parent"
