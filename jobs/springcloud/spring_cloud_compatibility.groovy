@@ -10,7 +10,6 @@ DslFactory dsl = this
 consulBuild(dsl, 'spring-cloud-consul')
 
 
-
 // Functions
 String everyDayAt(int offset, int startingHour = 5) {
 	return "0 0 ${startingHour + offset} 1/1 * ? *"
