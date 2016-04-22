@@ -74,6 +74,8 @@ Closure defaultSteps() {
 	def groovyLocation = '/opt/groovy/2.4.5/bin/groovy'
 	return buildStep {
 		shell("""
+					echo "Removing spring-cloud-build if present"
+					rm -rf spring-cloud-build
 					echo "Cloning spring-cloud-build"
 					git clone $springCloudBuildUrl
 					echo "Downloading and running script to change parent version"
