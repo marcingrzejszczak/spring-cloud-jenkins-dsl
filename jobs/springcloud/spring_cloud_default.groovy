@@ -9,10 +9,14 @@ DslFactory dsl = this
 @Field def groovyLocation = '/opt/groovy/2.4.5/bin/groovy'
 @Field def projects = ['spring-cloud-sleuth', 'spring-cloud-netflix', 'spring-cloud-zookeeper']
 
+
+
 projects.eachWithIndex { String projectName, Integer index ->
 	defaultCompatibilitySteps(dsl, projectName, index)
-	defaultViews(dsl)
 }
+
+defaultViews(dsl)
+
 
 String everyDayAt(int offset, int startingHour = 5) {
 	return "0 0 ${startingHour + offset} 1/1 * ? *"
