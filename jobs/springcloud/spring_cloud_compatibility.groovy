@@ -58,7 +58,10 @@ void consulBuild(DslFactory dsl, String projectName, Integer offset = 0) {
 					echo "Run consul"
 					./src/test/bash/travis_run_consul.sh
 				''')
-			steps defaultSteps()
+
+		}
+		steps defaultSteps()
+		steps {
 			shell('''
 					echo "Kill consul"
 					kill -9 $(ps aux | grep '[c]onsul' | awk '{print $2}') && echo "Killed consul" || echo "Can't find consul in running processes"
