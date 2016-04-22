@@ -21,7 +21,12 @@ void defaultCompatibilitySteps(DslFactory dsl, String projectName, Integer offse
 			cron everyDayAt(offset)
 		}
 		scm {
-			git("https://github.com/spring-cloud/$projectName")
+			git {
+				remote {
+					url "https://github.com/spring-cloud/$projectName"
+				}
+				createTag(false)
+			}
 		}
 		steps defaultSteps()
 	}
@@ -33,7 +38,12 @@ void consulBuild(DslFactory dsl, String projectName, Integer offset = 0) {
 			cron everyDayAt(offset)
 		}
 		scm {
-			git("https://github.com/spring-cloud/$projectName")
+			git {
+				remote {
+					url "https://github.com/spring-cloud/$projectName"
+				}
+				createTag(false)
+			}
 		}
 		steps {
 			shell('''
