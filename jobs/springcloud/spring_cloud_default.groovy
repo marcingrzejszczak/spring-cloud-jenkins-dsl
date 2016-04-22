@@ -51,21 +51,22 @@ void defaultCompatibilitySteps(DslFactory dsl, String projectName, Integer index
 }
 
 void defaultViews(DslFactory dsl) {
-	String folderName = 'Spring Cloud Jobs'
-	dsl.folder(folderName) {
+	dsl.nestedView('Spring Cloud') {
+		views {
+			listView('Compatibility Jobs') {
+				jobs {
+					regex('.*-compatibility-check')
+				}
+				columns {
+					status()
+					name()
+					lastSuccess()
+					lastFailure()
+					lastBuildConsole()
+					buildButton()
+				}
+			}
+		}
+	}
 
-	}
-	dsl.listView('Spring Cloud Compatibility Jobs') {
-		jobs {
-			name(folderName)
-		}
-		columns {
-			status()
-			name()
-			lastSuccess()
-			lastFailure()
-			lastBuildConsole()
-			buildButton()
-		}
-	}
 }
