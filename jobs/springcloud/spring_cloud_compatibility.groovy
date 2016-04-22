@@ -71,7 +71,6 @@ Closure defaultSteps() {
 	def springCloudBuildUrl = 'https://github.com/spring-cloud/spring-cloud-build'
 	def springBootVersion = '1.4.0.BUILD-SNAPSHOT'
 	def gistUrl = 'https://gist.githubusercontent.com/marcingrzejszczak/e63d4985f2a12d51af3310be51b2caa2/raw/c741bfea548b2b99fc242d743b1270301eab5167/replace_parent_version_in_pom.groovy'
-	def groovyLocation = '/opt/groovy/2.4.5/bin/groovy'
 	return buildStep {
 		shell("""
 					echo "Removing spring-cloud-build if present"
@@ -80,7 +79,7 @@ Closure defaultSteps() {
 					git clone $springCloudBuildUrl
 					echo "Downloading and running script to change parent version"
 					wget $gistUrl --no-check-certificate
-					$groovyLocation replace_parent_version_in_pom.groovy -p "spring-cloud-build/pom.xml" -v "$springBootVersion"
+					\${GROOVY_HOME} replace_parent_version_in_pom.groovy -p "spring-cloud-build/pom.xml" -v "$springBootVersion"
 					""")
 		shell('''
 					echo "Installing built version with different parent"
