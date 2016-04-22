@@ -83,7 +83,7 @@ Closure defaultSteps() {
 					""")
 		groovyScriptFile('replace_parent_version_in_pom.groovy ') {
 			scriptParams(["-p 'spring-cloud-build/pom.xml'", "-v '$springBootVersion'"])
-			groovyInstallation('2.4.5')
+			groovyInstallation('Default')
 		}
 		shell('''
 					echo "Installing built version with different parent"
