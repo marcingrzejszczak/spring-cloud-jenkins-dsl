@@ -79,7 +79,7 @@ Closure defaultSteps() {
 					git clone $springCloudBuildUrl
 					echo "Downloading and running script to change parent version"
 					wget $gistUrl --no-check-certificate
-					\${GROOVY_HOME} replace_parent_version_in_pom.groovy -p "spring-cloud-build/pom.xml" -v "$springBootVersion"
+					groovy replace_parent_version_in_pom.groovy -p "spring-cloud-build/pom.xml" -v "$springBootVersion"
 					""")
 		shell('''
 					echo "Installing built version with different parent"
