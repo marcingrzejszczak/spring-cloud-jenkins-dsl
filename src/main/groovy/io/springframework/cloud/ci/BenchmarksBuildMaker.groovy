@@ -32,14 +32,24 @@ class BenchmarksBuildMaker implements NotificationTrait {
 				./scripts/runJmeterBenchmarks.sh
 				''')
 				shell('''
+				echo "Copying JMeter results"
+				mkdir -p results/benchmarks
+				cp -avr benchmarks/target/ results/benchmarks/
+				''')
+				shell('''
 				echo "Running JMH benchmark tests"
 				./scripts/runJmhBenchmarks.sh
 				''')
+				shell('''
+				echo "Copying Benchmarks results"
+				mkdir -p results/jmh
+				cp -avr target/benchmarks.log results/jmh/
+				''')
 			}
 			publishers {
-				archiveArtifacts('benchmarks/target/jmeter/results/*.png')
-				archiveArtifacts('benchmarks/target/jmeter/results/analysis/*.*')
-				archiveArtifacts('target/benchmarks.log')
+				archiveArtifacts('results/benchmarks/jmeter/results/*.png')
+				archiveArtifacts('results/benchmarks/jmeter/results/analysis/*.*')
+				archiveArtifacts('results/jmh/benchmarks.log')
 			}
 			configure {
 				appendSlackNotification(it as Node)
