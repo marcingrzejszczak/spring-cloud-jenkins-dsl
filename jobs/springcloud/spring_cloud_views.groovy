@@ -19,7 +19,7 @@ dsl.nestedView('Spring Cloud') {
 				buildButton()
 			}
 		}
-		listView('Compatibility Jobs') {
+		listView('CI Jobs') {
 			jobs {
 				regex('.*-ci')
 			}
