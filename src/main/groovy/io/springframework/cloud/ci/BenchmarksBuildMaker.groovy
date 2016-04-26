@@ -36,7 +36,11 @@ class BenchmarksBuildMaker implements NotificationTrait {
 				./scripts/runJmhBenchmarks.sh
 				''')
 			}
-
+			publishers {
+				archiveArtifacts('benchmarks/target/jmeter/results/*.png')
+				archiveArtifacts('benchmarks/target/jmeter/results/analysis/*.*')
+				archiveArtifacts('target/benchmarks.log')
+			}
 			configure {
 				appendSlackNotification(it as Node)
 			}

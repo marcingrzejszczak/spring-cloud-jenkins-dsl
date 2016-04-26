@@ -47,6 +47,9 @@ class ConsulCompatibilityBuildMaker extends CompatibilityTasks {
 					kill -9 $(ps aux | grep '[c]onsul' | awk '{print $2}') && echo "Killed consul" || echo "Can't find consul in running processes"
 					''')
 			}
+			publishers {
+				archiveJunit('**/surefire-reports/*.xml')
+			}
 		}
 	}
 }

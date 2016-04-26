@@ -30,6 +30,9 @@ class CompatibilityBuildMaker extends CompatibilityTasks implements Notification
 			configure {
 				appendSlackNotification(it as Node)
 			}
+			publishers {
+				archiveJunit('**/surefire-reports/*.xml')
+			}
 		}
 	}
 
