@@ -19,5 +19,18 @@ dsl.nestedView('Spring Cloud') {
 				buildButton()
 			}
 		}
+		listView('Compatibility Jobs') {
+			jobs {
+				regex('.*-ci')
+			}
+			columns {
+				status()
+				name()
+				lastSuccess()
+				lastFailure()
+				lastBuildConsole()
+				buildButton()
+			}
+		}
 	}
 }
