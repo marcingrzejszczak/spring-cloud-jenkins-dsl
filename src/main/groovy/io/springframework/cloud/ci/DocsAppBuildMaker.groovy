@@ -27,7 +27,7 @@ class DocsAppBuildMaker implements NotificationTrait {
 				}
 			}
 			steps {
-				gradle('clean build', 'parallel')
+				gradle('clean build --parallel')
 			}
 
 			configure {
