@@ -29,7 +29,7 @@ class CompatibilityBuildMaker extends CompatibilityTasks implements Notification
 			}
 			steps defaultSteps()
 			configure {
-				appendSlackNotification(it as Node)
+				appendSlackNotificationForSpringCloud(it as Node)
 			}
 			publishers {
 				archiveJunit mavenJunitResults()

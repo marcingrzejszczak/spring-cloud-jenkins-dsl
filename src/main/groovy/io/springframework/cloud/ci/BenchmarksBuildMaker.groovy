@@ -52,7 +52,7 @@ class BenchmarksBuildMaker implements NotificationTrait {
 				archiveArtifacts('results/jmh/benchmarks.log')
 			}
 			configure {
-				appendSlackNotification(it as Node)
+				appendSlackNotificationForSpringCloud(it as Node)
 			}
 		}
 	}

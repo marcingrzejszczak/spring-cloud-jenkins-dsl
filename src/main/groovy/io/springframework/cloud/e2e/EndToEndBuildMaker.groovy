@@ -42,7 +42,7 @@ class EndToEndBuildMaker implements NotificationTrait, PublisherTrait {
 					""")
 			}
 			configure {
-				appendSlackNotification(it as Node)
+				appendSlackNotificationForSpringCloud(it as Node)
 			}
 			publishers {
 				archiveJunit gradleJUnitResults()

@@ -31,7 +31,7 @@ class DocsAppBuildMaker implements NotificationTrait {
 			}
 
 			configure {
-				appendSlackNotification(it as Node)
+				appendSlackNotificationForSpringCloud(it as Node)
 			}
 		}
 	}
