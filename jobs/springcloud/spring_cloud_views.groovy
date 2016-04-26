@@ -32,5 +32,18 @@ dsl.nestedView('Spring Cloud') {
 				buildButton()
 			}
 		}
+		listView('E2E Jobs') {
+			jobs {
+				regex('.*-e2e')
+			}
+			columns {
+				status()
+				name()
+				lastSuccess()
+				lastFailure()
+				lastBuildConsole()
+				buildButton()
+			}
+		}
 	}
 }

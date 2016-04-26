@@ -1,12 +1,13 @@
 package io.springframework.cloud.compatibility
 
 import io.springframework.common.NotificationTrait
+import io.springframework.common.PublisherTrait
 import javaposse.jobdsl.dsl.DslFactory
 
 /**
  * @author Marcin Grzejszczak
  */
-class CompatibilityBuildMaker extends CompatibilityTasks implements NotificationTrait {
+class CompatibilityBuildMaker extends CompatibilityTasks implements NotificationTrait, PublisherTrait {
 	private final DslFactory dsl
 
 	CompatibilityBuildMaker(DslFactory dsl) {
@@ -31,7 +32,7 @@ class CompatibilityBuildMaker extends CompatibilityTasks implements Notification
 				appendSlackNotification(it as Node)
 			}
 			publishers {
-				archiveJunit('**/surefire-reports/*.xml')
+				archiveJunit mavenJunitResults()
 			}
 		}
 	}

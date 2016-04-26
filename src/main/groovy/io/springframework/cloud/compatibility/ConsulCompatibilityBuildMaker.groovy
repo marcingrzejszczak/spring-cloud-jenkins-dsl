@@ -1,11 +1,11 @@
 package io.springframework.cloud.compatibility
 
+import io.springframework.common.PublisherTrait
 import javaposse.jobdsl.dsl.DslFactory
-
 /**
  * @author Marcin Grzejszczak
  */
-class ConsulCompatibilityBuildMaker extends CompatibilityTasks {
+class ConsulCompatibilityBuildMaker extends CompatibilityTasks implements PublisherTrait {
 	private final DslFactory dsl
 
 	ConsulCompatibilityBuildMaker(DslFactory dsl) {
@@ -48,7 +48,7 @@ class ConsulCompatibilityBuildMaker extends CompatibilityTasks {
 					''')
 			}
 			publishers {
-				archiveJunit('**/surefire-reports/*.xml')
+				archiveJunit mavenJunitResults()
 			}
 		}
 	}
