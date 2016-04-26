@@ -6,20 +6,18 @@ package io.springframework.common
 trait NotificationTrait {
 
 	void appendSlackNotification(Node rootNode) {
-		Node propertiesNode = rootNode / 'properties'
-		def slack = propertiesNode / 'jenkins.plugins.slack.SlackNotifier_-SlackJobProperty'
-		(slack / 'startNotification').setValue(true)
+		Node propertiesNode = rootNode / 'publishers'
+		def slack = propertiesNode / 'jenkins.plugins.slack.SlackNotifier'
+		(slack / 'startNotification').setValue(false)
 		(slack / 'notifySuccess').setValue(true)
-		(slack / 'notifyAborted').setValue(true)
-		(slack / 'notifyNotBuilt').setValue(true)
+		(slack / 'notifyAborted').setValue(false)
+		(slack / 'notifyNotBuilt').setValue(false)
 		(slack / 'notifyUnstable').setValue(true)
 		(slack / 'notifyFailure').setValue(true)
 		(slack / 'notifyBackToNormal').setValue(true)
 		(slack / 'notifyRepeatedFailure').setValue(true)
 		(slack / 'includeTestSummary').setValue(true)
 		(slack / 'showCommitList').setValue(true)
-		def publishers = (rootNode / 'publishers')
-		publishers / 'jenkins.plugins.slack.SlackNotifier'
 	}
 
 }
