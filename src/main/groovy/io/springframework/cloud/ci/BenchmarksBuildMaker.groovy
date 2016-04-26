@@ -47,8 +47,8 @@ class BenchmarksBuildMaker implements NotificationTrait {
 				''')
 			}
 			publishers {
-				archiveArtifacts('results/benchmarks/jmeter/results/*.png')
-				archiveArtifacts('results/benchmarks/jmeter/results/analysis/*.*')
+				archiveArtifacts('results/benchmarks/target/jmeter/results/*.png')
+				archiveArtifacts('results/benchmarks/target/jmeter/results/analysis/*.*')
 				archiveArtifacts('results/jmh/benchmarks.log')
 			}
 			configure {
